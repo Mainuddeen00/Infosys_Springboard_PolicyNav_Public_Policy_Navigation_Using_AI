@@ -77,6 +77,7 @@ This authentication module serves as the foundation for the PolicyNav project an
 
 ### ✅ 6. Ngrok Integration
 - Application exposed to internet using Ngrok
+- Link: https://ngrok.com/
 - Public URL generated for demonstration
 - Ngrok authtoken removed before GitHub upload (for security)
 
