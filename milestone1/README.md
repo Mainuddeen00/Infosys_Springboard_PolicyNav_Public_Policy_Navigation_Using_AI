@@ -107,3 +107,15 @@ Table: `users`
 pip install streamlit pyjwt
 streamlit run app.py
 ngrok http 8501
+```
+
+<img width="1440" height="900" alt="Screenshot 2026-02-13 at 8 18 32 PM" src="https://github.com/user-attachments/assets/0eee6530-99ea-41e5-88e7-13ac1e667f64" />
+
+
+<img width="1440" height="900" alt="Screenshot 2026-02-13 at 8 18 45 PM" src="https://github.com/user-attachments/assets/17d8d785-0acf-4fac-82a5-5c1904e20251" />
+
+
+<img width="1440" height="900" alt="Screenshot 2026-02-13 at 8 18 52 PM" src="https://github.com/user-attachments/assets/2a3321f8-0f81-4e9c-bba5-4126928ad1b0" />
+
+
+
