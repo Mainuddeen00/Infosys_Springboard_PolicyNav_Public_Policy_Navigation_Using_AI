@@ -1,12 +1,12 @@
 # Milestone 1 – Secure User Authentication System
 
-## 📌 Project Title
+## Project Title
 PolicyNav – Public Policy Navigation Using AI  
 Milestone 1: Secure User Authentication Module
 
 ---
 
-## 🧾 Description
+## Description
 
 In this milestone, a secure user authentication system was developed using **Streamlit**, **JWT (JSON Web Token)**, **SQLite**, and **Ngrok**.
 
@@ -14,7 +14,7 @@ This authentication module serves as the foundation for the PolicyNav project an
 
 ---
 
-## 🚀 Technologies Used
+## Technologies Used
 
 - Python 3
 - Streamlit (Frontend UI)
@@ -25,9 +25,9 @@ This authentication module serves as the foundation for the PolicyNav project an
 
 ---
 
-## 🔐 Features Implemented
+## Features Implemented
 
-### ✅ 1. User Signup
+### 1. User Signup
 - Username (Mandatory)
 - Email (Validated format)
 - Password (Alphanumeric validation)
@@ -39,7 +39,7 @@ This authentication module serves as the foundation for the PolicyNav project an
 
 ---
 
-### ✅ 2. Secure Login
+### 2. Secure Login
 - Email verification from database
 - Password hash comparison
 - JWT token generation upon successful login
@@ -47,14 +47,14 @@ This authentication module serves as the foundation for the PolicyNav project an
 
 ---
 
-### ✅ 3. Dashboard
+### 3. Dashboard
 - Welcome message displaying username
 - JWT verification before access
 - Logout functionality
 
 ---
 
-### ✅ 4. Forgot Password Flow
+### 4. Forgot Password Flow
 1. User enters registered email
 2. System verifies email existence
 3. Displays stored security question
@@ -64,7 +64,7 @@ This authentication module serves as the foundation for the PolicyNav project an
 
 ---
 
-### ✅ 5. JWT Authentication
+### 5. JWT Authentication
 - Token generated after login
 - Token contains:
   - User email
@@ -75,7 +75,7 @@ This authentication module serves as the foundation for the PolicyNav project an
 
 ---
 
-### ✅ 6. Ngrok Integration
+### 6. Ngrok Integration
 - Application exposed to internet using Ngrok
 - Link: https://ngrok.com/
 - Public URL generated for demonstration
@@ -83,7 +83,7 @@ This authentication module serves as the foundation for the PolicyNav project an
 
 ---
 
-## 🗄 Database Structure
+## Database Structure
 
 SQLite database file: `users.db`
 
@@ -100,7 +100,7 @@ Table: `users`
 
 ---
 
-## ▶ How to Run the Application (Local Setup)
+## How to Run the Application (Local Setup)
 
 ### Step 1: Install Dependencies
 
@@ -113,7 +113,10 @@ ngrok http 8501
 <img width="1440" height="900" alt="Screenshot 2026-02-13 at 8 18 32 PM" src="https://github.com/user-attachments/assets/0eee6530-99ea-41e5-88e7-13ac1e667f64" />
 
 
-<img width="1440" height="900" alt="Screenshot 2026-02-13 at 8 18 45 PM" src="https://github.com/user-attachments/assets/17d8d785-0acf-4fac-82a5-5c1904e20251" />
+
+<img width="1440" height="900" alt="Screenshot 2026-02-14 at 7 01 52 PM" src="https://github.com/user-attachments/assets/511abb86-1b9f-4b0d-9028-e1f25ed24c50" />
+
+
 
 
 <img width="1440" height="900" alt="Screenshot 2026-02-13 at 8 18 52 PM" src="https://github.com/user-attachments/assets/2a3321f8-0f81-4e9c-bba5-4126928ad1b0" />
