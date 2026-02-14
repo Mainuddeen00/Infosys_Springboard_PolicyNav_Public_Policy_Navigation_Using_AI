@@ -59,8 +59,31 @@ def verify_token(token):
         return None
 
 def valid_email(email):
-    pattern = r'^[^@]+@[^@]+\.[a-zA-Z]{2,}$'
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(pattern, email)
+
+def valid_password(password):
+    if len(password) < 6:
+        return False, "Password must be at least 6 characters"
+    if not password.isalnum():
+        return False, "Use only letters and numbers"
+    return True, ""
+
+def valid_answer(answer):
+    if not answer or answer.strip() == "":
+        return False, "Answer cannot be empty"
+    if len(answer.strip()) < 2:
+        return False, "Answer too short"
+    if not re.match(r'^[a-zA-Z\s]+$', answer):
+        return False, "Use only letters"
+    return True, ""
+
+def valid_username(username):
+    if len(username) < 3:
+        return False, "Username must be at least 3 characters"
+    if not re.match(r'^[a-zA-Z0-9_]+$', username):
+        return False, "Use letters, numbers, _"
+    return True, ""
 
 def check_email_exists(email):
     cursor.execute("SELECT email FROM users WHERE email=?", (email,))
@@ -72,121 +95,131 @@ if "page" not in st.session_state:
 
 if "token" not in st.session_state:
     st.session_state.token = None
-    
+
 if "reset_email" not in st.session_state:
     st.session_state.reset_email = None
-    
+
 if "security_question" not in st.session_state:
     st.session_state.security_question = None
 
-if "signup_success" not in st.session_state:
-    st.session_state.signup_success = False
-
-# ================= SIGNUP =================
+# ================= COMPACT SIGNUP =================
 def signup():
     st.markdown(Templates.container_start(), unsafe_allow_html=True)
     st.markdown(Templates.logo(), unsafe_allow_html=True)
 
-    st.markdown('<h1 class="page-title">Create Account</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="page-title">Sign Up</h1>', unsafe_allow_html=True)
 
-    username = st.text_input("Username", placeholder="Choose a username", key="signup_username")
-    email = st.text_input("Email", placeholder="Enter your email", key="signup_email")
-    password = st.text_input("Password", type="password", placeholder="Create a password", key="signup_password")
-    confirm = st.text_input("Confirm Password", type="password", placeholder="Confirm your password", key="signup_confirm")
-
-    st.markdown(Templates.divider(), unsafe_allow_html=True)
-
-    security_question = st.selectbox("Security Question", [
-        "What is your pet name?",
-        "What is your mother’s maiden name?",
-        "What is your favorite teacher?"
-    ], key="signup_question")
-
-    security_answer = st.text_input("Security Answer", placeholder="Your answer", key="signup_answer")
+    # Two columns for better space utilization
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        username = st.text_input("Username", placeholder="Username", key="signup_username")
+        password = st.text_input("Password", type="password", placeholder="Password", key="signup_password")
+        security_question = st.selectbox("Security Question", [
+            "Pet name?",
+            "Mother's maiden name?",
+            "Favorite teacher?"
+        ], key="signup_question")
+    
+    with col2:
+        email = st.text_input("Email", placeholder="Email", key="signup_email")
+        confirm = st.text_input("Confirm", type="password", placeholder="Confirm", key="signup_confirm")
+        security_answer = st.text_input("Answer", placeholder="Answer", key="signup_answer")
 
     if st.button("Register", key="signup_button"):
-        # Validate all fields
+        # Quick validations
         if not all([username, email, password, confirm, security_answer]):
-            st.error("❌ All fields are mandatory")
+            st.error("All fields required")
+            return
+
+        # Validate
+        is_valid_user, user_msg = valid_username(username)
+        if not is_valid_user:
+            st.error(user_msg)
             return
 
         if not valid_email(email):
-            st.error("❌ Invalid email format")
+            st.error("Invalid email")
+            return
+
+        is_valid_pass, pass_msg = valid_password(password)
+        if not is_valid_pass:
+            st.error(pass_msg)
             return
 
         if password != confirm:
-            st.error("❌ Passwords do not match")
+            st.error("Passwords don't match")
             return
 
-        # Check if email already exists
+        is_valid_ans, ans_msg = valid_answer(security_answer)
+        if not is_valid_ans:
+            st.error(ans_msg)
+            return
+
         if check_email_exists(email):
-            st.error("❌ Email already exists")
+            st.error("Email exists")
             return
 
         try:
-            # Insert new user
             cursor.execute(
                 "INSERT INTO users (username,email,password,security_question,security_answer) VALUES (?,?,?,?,?)",
-                (username, email, hash_password(password), security_question, hash_password(security_answer))
+                (username, email, hash_password(password), security_question, hash_password(security_answer.strip()))
             )
             conn.commit()
-            st.success("✅ Account created successfully!")
-            st.session_state.signup_success = True
-            # Clear form by resetting the keys
+            st.success("Account created!")
+            # Clear form
             for key in ['signup_username', 'signup_email', 'signup_password', 'signup_confirm', 'signup_answer']:
                 if key in st.session_state:
                     del st.session_state[key]
-            # Redirect to login after 2 seconds
             import time
-            time.sleep(2)
+            time.sleep(1.5)
             st.session_state.page = "login"
             st.rerun()
         except Exception as e:
-            st.error(f"❌ An error occurred: {str(e)}")
+            st.error("Registration failed")
 
-    st.markdown(Templates.divider(), unsafe_allow_html=True)
-
+    # Compact link
+    st.markdown('<p style="text-align: center; margin-top: 1rem;">', unsafe_allow_html=True)
     if st.button("← Back to Login", key="back_to_login"):
         st.session_state.page = "login"
         st.rerun()
+    st.markdown('</p>', unsafe_allow_html=True)
 
     st.markdown(Templates.container_end(), unsafe_allow_html=True)
 
-# ================= LOGIN =================
+# ================= COMPACT LOGIN =================
 def login():
     st.markdown(Templates.container_start(), unsafe_allow_html=True)
     st.markdown(Templates.logo(), unsafe_allow_html=True)
 
     st.markdown('<h1 class="page-title">Welcome Back</h1>', unsafe_allow_html=True)
 
-    email = st.text_input("Email", placeholder="Enter your email", key="login_email")
-    password = st.text_input("Password", type="password", placeholder="Enter your password", key="login_password")
+    email = st.text_input("Email", placeholder="Email", key="login_email")
+    password = st.text_input("Password", type="password", placeholder="Password", key="login_password")
 
     if st.button("Login", key="login_button"):
         if not email or not password:
-            st.error("❌ Please enter both email and password")
+            st.error("Enter email and password")
             return
-            
+
         cursor.execute("SELECT username,password FROM users WHERE email=?", (email,))
         user = cursor.fetchone()
 
         if user and user[1] == hash_password(password):
             token = create_token(email, user[0])
             st.session_state.token = token
-            st.success("✅ Login successful!")
+            st.success("Welcome!")
             st.session_state.page = "dashboard"
             st.rerun()
         else:
-            st.error("❌ Invalid email or password")
+            st.error("Invalid credentials")
 
-    st.markdown(Templates.divider(), unsafe_allow_html=True)
-
+    # Compact buttons in one row
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("Create Account", key="goto_signup"):
+        if st.button("Sign Up", key="goto_signup"):
             st.session_state.page = "signup"
             st.rerun()
-    
     with col2:
         if st.button("Forgot Password", key="goto_forgot"):
             st.session_state.page = "forgot"
@@ -194,11 +227,11 @@ def login():
 
     st.markdown(Templates.container_end(), unsafe_allow_html=True)
 
-# ================= DASHBOARD =================
+# ================= COMPACT DASHBOARD =================
 def dashboard():
     payload = verify_token(st.session_state.token)
     if not payload:
-        st.warning("⚠️ Session expired")
+        st.warning("Session expired")
         st.session_state.token = None
         st.session_state.page = "login"
         st.rerun()
@@ -206,7 +239,7 @@ def dashboard():
 
     st.markdown(Templates.dashboard_container_start(), unsafe_allow_html=True)
     st.markdown(Templates.logo(), unsafe_allow_html=True)
-    st.markdown(Templates.welcome_message(payload['username']), unsafe_allow_html=True)
+    st.markdown(f'<h2 style="color: white; margin-bottom: 2rem;">Hello, {payload["username"]}!</h2>', unsafe_allow_html=True)
 
     if st.button("Logout", key="logout_button"):
         st.session_state.token = None
@@ -215,7 +248,7 @@ def dashboard():
 
     st.markdown(Templates.dashboard_container_end(), unsafe_allow_html=True)
 
-# ================= FORGOT PASSWORD =================
+# ================= COMPACT FORGOT PASSWORD =================
 def forgot_password():
     st.markdown(Templates.container_start(), unsafe_allow_html=True)
     st.markdown(Templates.logo(), unsafe_allow_html=True)
@@ -223,13 +256,13 @@ def forgot_password():
     st.markdown('<h1 class="page-title">Reset Password</h1>', unsafe_allow_html=True)
 
     if not st.session_state.reset_email:
-        email = st.text_input("Enter Email", placeholder="Your registered email", key="forgot_email")
+        email = st.text_input("Email", placeholder="Your email", key="forgot_email")
 
-        if st.button("Verify Email", key="verify_email"):
+        if st.button("Verify", key="verify_email"):
             if not email:
-                st.error("❌ Please enter your email")
+                st.error("Enter email")
                 return
-                
+
             cursor.execute("SELECT security_question FROM users WHERE email=?", (email,))
             user = cursor.fetchone()
 
@@ -238,36 +271,40 @@ def forgot_password():
                 st.session_state.security_question = user[0]
                 st.rerun()
             else:
-                st.error("❌ Email not found")
+                st.error("Email not found")
     else:
-        st.markdown(Templates.info_box(st.session_state.security_question), unsafe_allow_html=True)
+        st.markdown(f'<p style="color: #4F8BF9; text-align: center; margin-bottom: 1rem;">{st.session_state.security_question}</p>', unsafe_allow_html=True)
 
-        answer = st.text_input("Enter Security Answer", placeholder="Your answer", key="security_answer")
-        new_password = st.text_input("New Password", type="password", placeholder="Enter new password", key="new_password")
+        answer = st.text_input("Answer", placeholder="Your answer", key="security_answer")
+        new_password = st.text_input("New Password", type="password", placeholder="New password", key="new_password")
 
-        if st.button("Reset Password", key="reset_button"):
+        if st.button("Reset", key="reset_button"):
             if not answer or not new_password:
-                st.error("❌ Please fill all fields")
+                st.error("All fields required")
                 return
-                
+
+            is_valid_pass, pass_msg = valid_password(new_password)
+            if not is_valid_pass:
+                st.error(pass_msg)
+                return
+
             cursor.execute("SELECT security_answer FROM users WHERE email=?", (st.session_state.reset_email,))
             stored_answer = cursor.fetchone()
 
-            if stored_answer and stored_answer[0] == hash_password(answer):
+            if stored_answer and stored_answer[0] == hash_password(answer.strip()):
                 cursor.execute("UPDATE users SET password=? WHERE email=?",
                                (hash_password(new_password), st.session_state.reset_email))
                 conn.commit()
-                st.success("✅ Password updated successfully!")
+                st.success("Password updated!")
                 st.session_state.page = "login"
                 st.session_state.reset_email = None
                 st.session_state.security_question = None
                 st.rerun()
             else:
-                st.error("❌ Incorrect security answer")
+                st.error("Wrong answer")
 
-    st.markdown(Templates.divider(), unsafe_allow_html=True)
-
-    if st.button("← Back to Login", key="back_from_forgot"):
+    # Back link
+    if st.button("← Back", key="back_from_forgot"):
         st.session_state.page = "login"
         st.session_state.reset_email = None
         st.session_state.security_question = None
