@@ -33,23 +33,18 @@
 
 ## 📸 Screenshots
 
-### Login Page
-![Login Page](login_page.png)
-
-### Signup Page
-![Signup Page](signup_page.png)
-
 ### Dashboard with Sidebar
-![Dashboard](dashboard.png)
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 39 51 PM" src="https://github.com/user-attachments/assets/d397c5a8-9fa7-4964-b66f-cc77813cdbcf" />
+
 
 ### Readability Analyzer
-![Readability Analyzer](readability.png)
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 40 01 PM" src="https://github.com/user-attachments/assets/4899b7a7-843a-427f-aa53-41fcf805af33" />
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 40 07 PM" src="https://github.com/user-attachments/assets/a5ed813f-1e4a-4a87-9481-509de378ac4a" />
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 40 24 PM" src="https://github.com/user-attachments/assets/f7cd448a-f3f0-464e-a686-1062e67ae201" />
+
 
 ### OTP Email
-![OTP Email](otp_email.png)
-
-### Account Lock Feature
-![Account Lock](account_lock.png)
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 39 30 PM" src="https://github.com/user-attachments/assets/f16b4895-3dc0-4708-a675-40d7ebb66734" />
 
 ## 🚀 How to Run
 
