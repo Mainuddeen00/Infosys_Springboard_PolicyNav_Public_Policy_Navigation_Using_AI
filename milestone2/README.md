@@ -1,6 +1,6 @@
 # PolicyNav - Milestone 2
 
-## 🔐 Enhanced Authentication System
+##  Enhanced Authentication System
 
 ### Features Implemented
 
@@ -62,7 +62,7 @@
 <img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 09 22 PM" src="https://github.com/user-attachments/assets/4ec9ab30-b0df-4103-a8aa-860d63551b90" />
 
 
-## 🚀 How to Run
+##  How to Run
 
 1. Open the Colab notebook
 2. Add required secrets:
@@ -72,14 +72,14 @@
 3. Run all cells in order
 4. Click the generated URL
 
-## 📁 Files Included
+##  Files Included
 - `app.py` - Main application
 - `styles.py` - CSS styling
 - `templates.py` - HTML templates
 - `readability.py` - Readability analyzer
 - Screenshots (png files)
 
-## ✅ Testing Instructions
+##  Testing Instructions
 1. Register a new user
 2. Login with credentials
 3. Test Forgot Password with OTP
