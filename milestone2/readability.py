@@ -18,4 +18,4 @@ class ReadabilityAnalyzer:
             "Gunning Fog": textstat.gunning_fog(self.text),
             "Coleman-Liau": textstat.coleman_liau_index(self.text)
         }
-print("✅ readability.py created successfully!")
+print("readability.py created successfully!")
