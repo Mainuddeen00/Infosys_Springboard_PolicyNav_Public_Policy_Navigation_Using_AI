@@ -33,18 +33,34 @@
 
 ## 📸 Screenshots
 
+### Login Page
+
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 07 05 PM" src="https://github.com/user-attachments/assets/6583fdbd-fbbf-4f85-9683-9ba5c6eddbde" />
+
+### Signup Page
+
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 08 32 PM" src="https://github.com/user-attachments/assets/7e9bec99-7af8-4446-a9b5-ed5266edcafd" />
+
 ### Dashboard with Sidebar
-<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 39 51 PM" src="https://github.com/user-attachments/assets/d397c5a8-9fa7-4964-b66f-cc77813cdbcf" />
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 07 22 PM" src="https://github.com/user-attachments/assets/40a2f1a1-3f23-4960-9ed4-b632410c0cc5" />
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 07 29 PM" src="https://github.com/user-attachments/assets/42ac319f-751d-4a9e-b461-744842323cff" />
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 07 43 PM" src="https://github.com/user-attachments/assets/a0a4e40d-e95d-4b21-8100-49260c559be1" />
+
+
 
 
 ### Readability Analyzer
-<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 40 01 PM" src="https://github.com/user-attachments/assets/4899b7a7-843a-427f-aa53-41fcf805af33" />
-<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 40 07 PM" src="https://github.com/user-attachments/assets/a5ed813f-1e4a-4a87-9481-509de378ac4a" />
-<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 40 24 PM" src="https://github.com/user-attachments/assets/f7cd448a-f3f0-464e-a686-1062e67ae201" />
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 07 50 PM" src="https://github.com/user-attachments/assets/94da907f-94a3-4f9e-a205-dea4403e8191" />
+
 
 
 ### OTP Email
-<img width="1440" height="900" alt="Screenshot 2026-02-23 at 7 39 30 PM" src="https://github.com/user-attachments/assets/f16b4895-3dc0-4708-a675-40d7ebb66734" />
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 08 08 PM" src="https://github.com/user-attachments/assets/68d820ae-9b2b-450d-9294-4fe071a6cee1" />
+
+
+### Account Lock Feature
+<img width="1440" height="900" alt="Screenshot 2026-02-23 at 10 09 22 PM" src="https://github.com/user-attachments/assets/4ec9ab30-b0df-4103-a8aa-860d63551b90" />
+
 
 ## 🚀 How to Run
 
