@@ -65,3 +65,22 @@ To personalize the SaaS experience, users can upload a custom Profile Avatar (PN
 
 <img width="1440" height="900" alt="Screenshot 2026-03-12 at 5 07 23 PM" src="https://github.com/user-attachments/assets/ab80b983-8fc6-4447-a8aa-ea23daed5369" />
 
+
+## Technology Stack
+* **Frontend UI & Personalization:** Streamlit, Streamlit Components, Custom HTML/CSS injected styling (Animations, Native SVG injection).
+* **Data Science & Analytics:** Pandas (Dataframe manipulation), Plotly Express (Interactive charts), Matplotlib, WordCloud (Sentiment visualization).
+* **Backend Database:** SQLite (Relational User DB, Roles, Base64 Image Storage, & Policy Metadata DB).
+* **Security & Authentication:** PyJWT, bcrypt, hmac, hashlib, smtplib (SMTP Routing), Base64 (Secure avatar encoding).
+* **AI & Machine Learning:** HuggingFace Transformers (`google/flan-t5-base`), Sentence-Transformers (`all-MiniLM-L6-v2`), FAISS (Facebook AI Similarity Search), spaCy.
+* **Data Processing & Scraping:** PyPDF2, textstat, NetworkX, Pyvis, Wikipedia API.
+
+---
+
+## How to Run the Application (Google Colab)
+Since the FAISS vector database, parsed chunks, and the comprehensive SQLite user database are permanently saved in Google Drive, there is no need to re-download or re-process the PDFs. 
+
+1. **Mount Google Drive** to access the pre-processed backend files: `policy_vector_db.index`, `chunks.pkl`, and `users.db`.
+2. **Install Dependencies:** (Note: This now includes the heavy Data Science libraries required for the Admin Analytics Dashboard).
+   ```bash
+   pip install streamlit pyjwt bcrypt python-dotenv pyngrok nltk plotly textstat PyPDF2 transformers deep-translator pyvis sentence-transformers faiss-cpu wikipedia spacy pandas matplotlib wordcloud
+   python -m spacy download en_core_web_sm
