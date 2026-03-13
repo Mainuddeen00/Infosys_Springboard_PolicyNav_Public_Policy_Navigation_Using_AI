@@ -84,3 +84,28 @@ Since the FAISS vector database, parsed chunks, and the comprehensive SQLite use
    ```bash
    pip install streamlit pyjwt bcrypt python-dotenv pyngrok nltk plotly textstat PyPDF2 transformers deep-translator pyvis sentence-transformers faiss-cpu wikipedia spacy pandas matplotlib wordcloud
    python -m spacy download en_core_web_sm
+
+
+   ## Team Contributions
+
+This comprehensive SaaS platform was developed collaboratively as part of the Infosys Springboard Internship. Below is the breakdown of responsibilities and contributions for Milestone 4:
+
+* **Mainuddeen**
+  * **Focus:** Admin Dashboard Architecture & Management.
+  * **Contributions:** Led the development of the Admin Command Center. Engineered the Role-Based Access Control (RBAC), implemented the soft-delete data anonymization logic, and built the account locking/unlocking mechanisms for user control.
+
+* **Srideepalakshmi**
+  * **Focus:** Admin Data Analytics & Visualization.
+  * **Contributions:** Collaborated heavily on the Admin panel. Integrated `pandas` and `plotly.express` to build the real-time interactive charts tracking AI feature popularity and regional language utilization.
+
+* **Arjun L Nair**
+  * **Focus:** Admin Activity Tracking & Data Export.
+  * **Contributions:** Worked on the Admin Dashboard by developing the searchable Global Activity Logs system and engineering the 1-click `.csv` data export buttons for offline reporting.
+
+* **Bhuvaneshwar Reddy Mandadapu**
+  * **Focus:** User Dashboard & Security Personalization.
+  * **Contributions:** Developed the user settings portal. Focused on the secure email update workflow, integrating the new OTP verification email logic and ensuring automatic session logouts for enhanced security.
+
+* **Shambhavi Jha**
+  * **Focus:** User Profile Identity & UI/UX.
+  * **Contributions:** Implemented the user personalization features. Engineered the secure 5MB Avatar (DP) upload system using Base64 database storage, built the live password strength validation UI, and refined application styling.
