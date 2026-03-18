@@ -5,7 +5,7 @@ Simplifying complex government policies through multilingual AI, summarization, 
 # Links: 
 | Category       | Link                                   |
 | -------------- | -------------------------------------- |
-| Demo Video     | Coming Soon                            |
+| Demo Video     | https://drive.google.com/file/d/1iWPSKYKJvN9n7cfZkcAdOkUDFPQ0DH1q/view?usp=sharing                            |
 | Source Code    | This Repository                        |
 | Docker Support | Yes                                    |
 | AI Models      | Sentence Transformers · FLAN-T5 · NLLB |
